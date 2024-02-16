@@ -36,6 +36,7 @@
 
             document.getElementById("dayOfWeek").innerText = now.format("dddd");
             document.getElementById("fullDate").innerText = now.format("D [de] MMMM, YYYY");
+            document.getElementById("footerDate").innerText = base.format("D [de] MMMM [de] YYYY");
 
             for (const key of Object.keys(rates)) {
                 const value = rates[key] * diffDays;
@@ -92,6 +93,9 @@
                 <h2 id="stat-littleHeartsOpened">0</h2>
                 <p>💖 Coraçõezinhos abertos</p>
             </div>
+        </div>
+        <div class="date">
+            <p>desde <span id="footerDate"></span></span></p>
         </div>
     </div>
 </body>
