@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cuzner Counters</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.11.10/dayjs.min.js"
+        integrity="sha512-FwNWaxyfy2XlEINoSnZh1JQ5TRRtGow0D6XcmAWmYCRgvqOUTnzCxPc9uF35u5ZEpirk1uhlPVA19tflhvnW1g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.11.10/locale/pt-br.min.js"
+        integrity="sha512-NhVRBurgyQh9QdTuhVj+REoRu/2Sf2IP12VfnGmfc/jPG3uGUquxOLvRpq5R/hGkAR3wO0qSReX5+b3KDFgufQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        dayjs.locale("pt-br");
+        const now = dayjs();
+        const base = dayjs('2024-01-26');
+
+        const rates = {
+            ultraMegaSummary: 6,
+            shotsOnGoal: 15,
+            friedPastel: 8,
+            flyingCockroach: 5,
+            coffeesNotPaid: 4,
+            skippedMeetings: 9,
+            waterDrinkingFireHydrant: 3,
+            shortCircuit: 11,
+            exchangedStickers: 5,
+            littleHeartsOpened: 2
+        };
+
+        const diffDays = now.diff(base, 'd');
+        console.log(`Diff is ${diffDays} days`);
+
+        document.getElementById("dayOfWeek").innerText = now.format("dddd");
+        document.getElementById("fullDate").innerText = now.format("D [de] MMMM, YYYY");
+
+        for (const key of Object.keys(rates)) {
+            const value = rates[key] * diffDays;
+            document.getElementById(`stat-${key}`).innerText = value.toLocaleString("pt-br");
+        }
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <h1>The Cuzner Counters</h1>
+        <div class="date">
+            <p><span id="dayOfWeek"></span>, <span id="fullDate"></span></p>
+        </div>
+        <div class="stats">
+            <div class="stat">
+                <h2 id="stat-shotsOnGoal">0</h2>
+                <p id="msg-shotsOnGoal">⚽️ Chutes a gol</p>
+            </div>
+            <div class="stat">
+                <h2 id="stat-friedPastel">0</h2>
+                <p>🥟 Pastéis fritos</p>
+            </div>
+            <div class="stat">
+                <h2 id="stat-flyingCockroach">0</h2>
+                <p>🪳 Baratas voando</p>
+            </div>
+            <div class="stat">
+                <h2 id="stat-coffeesNotPaid">0</h2>
+                <p>☕️ Cafés não pagos</p>
+            </div>
+            <div class="stat">
+                <h2 id="stat-ultraMegaSummary">0</h2>
+                <p>📜 Ultra-mega resumos</p>
+            </div>
+            <div class="stat">
+                <h2 id="stat-skippedMeetings">0</h2>
+                <p>⏱️ Reuniões desmarcadas</p>
+            </div>
+            <div class="stat">
+                <h2 id="stat-waterDrinkingFireHydrant">0</h2>
+                <p>💦 Litros de água de hidrante bebidos</p>
+            </div>
+            <div class="stat">
+                <h2 id="stat-shortCircuit">0</h2>
+                <p>⚡️ Curto-circuitos feitos</p>
+            </div>
+            <div class="stat">
+                <h2 id="stat-exchangedStickers">0</h2>
+                <p>🎟️ Figurinhas trocadas</p>
+            </div>
+            <div class="stat">
+                <h2 id="stat-littleHeartsOpened">0</h2>
+                <p>💖 Coraçõezinhos abertos</p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
