@@ -16,7 +16,7 @@
         document.addEventListener('DOMContentLoaded', function () {
             dayjs.locale("pt-br");
             const now = dayjs();
-            const base = dayjs('2024-01-26');
+            const baseDate = dayjs('2008-04-01'); // ACN join date
 
             const rates = {
                 ultraMegaSummary: 6,
@@ -33,12 +33,12 @@
                 littleBrothersAndComrades: 10
             };
 
-            const diffDays = now.diff(base, 'd');
+            const diffDays = now.diff(baseDate, 'd');
             console.log(`Diff is ${diffDays} days`);
 
             document.getElementById("dayOfWeek").innerText = now.format("dddd");
-            document.getElementById("fullDate").innerText = now.format("D [de] MMMM, YYYY");
-            document.getElementById("footerDate").innerText = base.format("D [de] MMMM [de] YYYY");
+            document.getElementById("fullDate").innerText = now.format("D [de] MMMM [de] YYYY");
+            document.getElementById("footerDate").innerText = baseDate.format("D [de] MMMM [de] YYYY");
 
             for (const key of Object.keys(rates)) {
                 const value = rates[key] * diffDays;
@@ -52,7 +52,7 @@
     <div class="container">
         <h1>The Cuzner Counters</h1>
         <div class="date">
-            <p><span id="dayOfWeek"></span>, <span id="fullDate"></span></p>
+            <p>Hoje é <span id="dayOfWeek"></span>, <span id="fullDate"></span></p>
         </div>
         <div class="stats">
             <div class="stat">
@@ -105,7 +105,7 @@
             </div>
         </div>
         <div class="date">
-            <p>desde <span id="footerDate"></span></span></p>
+            <p>desde <span id="footerDate"></span></p>
         </div>
     </div>
 </body>
