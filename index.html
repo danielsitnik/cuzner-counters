@@ -32,19 +32,21 @@
                 shotsOnGoal: 15,
                 bouncingBall: 16,
                 friedPastel: 8,
-                flyingCockroach: 5,
+                flyingCockroach: 5.4,
                 coffeesNotPaid: 4,
                 skippedMeetings: 9,
-                waterDrinkingFireHydrant: 3,
+                waterDrinkingFireHydrant: 2.6,
                 shortCircuit: 11,
-                exchangedStickers: 5,
+                exchangedStickers: 5.1,
                 littleHeartsOpened: 2,
-                quickGame: 6,
+                quickGame: 6.3,
                 littleBrothersAndComrades: 10,
                 strategicPause: 3,
                 emojisUsed: 17,
                 longStoryShort: 6,
                 pardonsAsked: 1,
+                escapedTurtle: 0.2,
+                throwRockPermission: 0.4,
             };
 
             const diffDays = now.diff(baseDate, 'd');
@@ -55,7 +57,7 @@
             document.getElementById("footerDate").innerText = baseDate.format("D [de] MMMM [de] YYYY");
 
             for (const key of Object.keys(rates)) {
-                const value = rates[key] * diffDays;
+                const value = Math.round(rates[key] * diffDays);
                 document.getElementById(`stat-${key}`).innerText = value.toLocaleString("pt-br");
             }
 
@@ -149,6 +151,14 @@
             <div class="stat">
                 <h2 id="stat-pardonsAsked">0</h2>
                 <p>🙏 Milhares de perdões pedidos</p>
+            </div>
+            <div class="stat">
+                <h2 id="stat-escapedTurtle">0</h2>
+                <p>🐢 Tartarugas escapadas</p>
+            </div>
+            <div class="stat">
+                <h2 id="stat-throwRockPermission">0</h2>
+                <p>🪨 Pedidos de permissão para jogar pedra</p>
             </div>
         </div>
         <div class="date">
