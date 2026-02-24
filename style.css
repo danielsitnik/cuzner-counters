@@ -1,182 +1,194 @@
 /* shadcn/ui inspired CSS variables */
 :root {
-  --background: 0 0% 100%;
-  --foreground: 222.2 84% 4.9%;
-  --card: 0 0% 100%;
-  --card-foreground: 222.2 84% 4.9%;
-  --muted: 210 40% 96.1%;
-  --muted-foreground: 215.4 16.3% 46.9%;
-  --border: 214.3 31.8% 91.4%;
-  --ring: 222.2 84% 4.9%;
-  --radius: 0.5rem;
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --border: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+    --radius: 0.5rem;
 }
 
 * {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: hsl(var(--background));
-  color: hsl(var(--foreground));
-  line-height: 1.5;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    font-family:
+        -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+        Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 .container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 2rem 1rem;
-  text-align: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+    text-align: center;
 }
 
 .container h1 {
-  margin-top: 1rem;
-  margin-bottom: 0.5rem;
-  font-size: 2.5rem;
-  font-weight: 700;
-  letter-spacing: -0.025em;
-  line-height: 1.2;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+    font-size: 2.5rem;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    line-height: 1.2;
 }
 
 .date {
-  margin-top: 0.5rem;
-  margin-bottom: 2rem;
+    margin-top: 0.5rem;
+    margin-bottom: 2rem;
 }
 
 .date p {
-  margin: 0;
-  font-size: 0.875rem;
-  color: hsl(var(--muted-foreground));
-  font-weight: 500;
+    margin: 0;
+    font-size: 0.875rem;
+    color: hsl(var(--muted-foreground));
+    font-weight: 500;
 }
 
 #bday {
-  margin-bottom: 1.5rem;
-  padding: 1rem;
-  background-color: hsl(var(--muted));
-  border-radius: var(--radius);
-  border: 1px solid hsl(var(--border));
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    background-color: hsl(var(--muted));
+    border-radius: var(--radius);
+    border: 1px solid hsl(var(--border));
 }
 
 #bday p {
-  margin: 0;
-  font-size: 1rem;
-  font-weight: 500;
-  color: hsl(var(--foreground));
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 500;
+    color: hsl(var(--foreground));
 }
 
 .stats {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 1rem;
-  margin-bottom: 2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
 }
 
 .stat {
-  text-align: center;
-  padding: 1.5rem 1rem;
-  background-color: hsl(var(--card));
-  border: 1px solid hsl(var(--border));
-  border-radius: var(--radius);
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    text-align: center;
+    padding: 1.5rem 1rem;
+    background-color: hsl(var(--card));
+    border: 1px solid hsl(var(--border));
+    border-radius: var(--radius);
+    box-shadow:
+        0 1px 3px 0 rgba(0, 0, 0, 0.1),
+        0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .stat:hover {
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  transform: translateY(-2px);
-  border-color: hsl(var(--ring));
+    box-shadow:
+        0 4px 6px -1px rgba(0, 0, 0, 0.1),
+        0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    transform: translateY(-2px);
+    border-color: hsl(var(--ring));
 }
 
 .stat h2 {
-  font-size: 2rem;
-  font-weight: 700;
-  margin: 0 0 0.5rem 0;
-  color: hsl(var(--foreground));
-  letter-spacing: -0.025em;
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 0 0 0.5rem 0;
+    color: hsl(var(--foreground));
+    letter-spacing: -0.025em;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.stat:hover h2 {
+    transform: scale(1.1);
+    color: hsl(var(--ring));
 }
 
 .stat p {
-  font-size: 0.875rem;
-  color: hsl(var(--muted-foreground));
-  margin: 0;
-  font-weight: 500;
+    font-size: 0.875rem;
+    color: hsl(var(--muted-foreground));
+    margin: 0;
+    font-weight: 500;
 }
 
 @media (min-width: 640px) {
-  .container {
-    padding: 3rem 2rem;
-  }
+    .container {
+        padding: 3rem 2rem;
+    }
 
-  .container h1 {
-    font-size: 3rem;
-  }
+    .container h1 {
+        font-size: 3rem;
+    }
 
-  .stats {
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  }
+    .stats {
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    }
 
-  .stat h2 {
-    font-size: 2.25rem;
-  }
+    .stat h2 {
+        font-size: 2.25rem;
+    }
 }
 
 @media (min-width: 768px) {
-  .stats {
-    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-    gap: 1.25rem;
-  }
+    .stats {
+        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+        gap: 1.25rem;
+    }
 
-  .stat {
-    padding: 1.75rem 1.25rem;
-  }
+    .stat {
+        padding: 1.75rem 1.25rem;
+    }
 }
 
 @media (min-width: 1024px) {
-  .container h1 {
-    font-size: 3.5rem;
-  }
+    .container h1 {
+        font-size: 3.5rem;
+    }
 
-  .stats {
-    grid-template-columns: repeat(4, 1fr);
-  }
+    .stats {
+        grid-template-columns: repeat(4, 1fr);
+    }
 }
 
 .rotate {
-  animation: rotation infinite 3s linear;
+    animation: rotation infinite 3s linear;
 }
 
 .pulse {
-  animation: pulse 3s infinite;
+    animation: pulse 3s infinite;
 }
 
 @keyframes rotation {
-  from {
-    transform: rotate(0deg);
-  }
+    from {
+        transform: rotate(0deg);
+    }
 
-  to {
-    transform: rotate(360deg);
-  }
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 @keyframes pulse {
-  0% {
-    transform: scale(0.9);
-    animation-timing-function: ease-in-out;
-  }
+    0% {
+        transform: scale(0.9);
+        animation-timing-function: ease-in-out;
+    }
 
-  70% {
-    transform: scale(1);
-    animation-timing-function: ease-in-out;
-  }
+    70% {
+        transform: scale(1);
+        animation-timing-function: ease-in-out;
+    }
 
-  100% {
-    transform: scale(0.9);
-    animation-timing-function: ease-in-out;
-  }
+    100% {
+        transform: scale(0.9);
+        animation-timing-function: ease-in-out;
+    }
 }
