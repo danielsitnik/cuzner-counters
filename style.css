@@ -79,6 +79,7 @@ body {
 }
 
 .stat {
+    position: relative;
     text-align: center;
     padding: 1.5rem 1rem;
     background-color: hsl(var(--card));
@@ -174,6 +175,26 @@ body {
     to {
         transform: rotate(360deg);
     }
+}
+
+@keyframes tick-flash {
+    0%   { color: hsl(var(--foreground)); }
+    30%  { color: hsl(142, 71%, 45%); }
+    100% { color: hsl(var(--ring)); }
+}
+
+.stat.ticked h2 {
+    animation: tick-flash 0.6s ease forwards;
+}
+
+@keyframes tick-flash-inline {
+    0%   { color: inherit; }
+    30%  { color: hsl(142, 71%, 45%); }
+    100% { color: inherit; }
+}
+
+.ticked-inline {
+    animation: tick-flash-inline 0.6s ease forwards;
 }
 
 @keyframes pulse {

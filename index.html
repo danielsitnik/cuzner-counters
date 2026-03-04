@@ -24,7 +24,6 @@
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             dayjs.locale("pt-br");
-            const now = dayjs();
             const baseDate = dayjs('2008-04-01'); // ACN join date
 
             const rates = {
@@ -53,30 +52,76 @@
                 zeroCrisis: 1.5,
             };
 
-            const diffDays = now.diff(baseDate, 'd');
-            console.log(`Diff is ${diffDays} days`);
-
-            document.getElementById("dayOfWeek").innerText = now.format("dddd");
-            document.getElementById("fullDate").innerText = now.format("D [de] MMMM [de] YYYY");
             document.getElementById("footerDate").innerText = baseDate.format("D [de] MMMM [de] YYYY");
 
-            let totalEvents = 0;
-
-            for (const key of Object.keys(rates)) {
-                const value = Math.round(rates[key] * diffDays);
-                totalEvents += value;
-                document.getElementById(`stat-${key}`).innerText = value.toLocaleString("pt-br");
-            }
-
-            // total
-            document.getElementById("total-events").innerText = totalEvents.toLocaleString("pt-br");
-
             // birthday
-            if (now.date() === 1 && now.month() === 3) {
-                const bdayYears = now.year() - baseDate.year();
+            const today = dayjs();
+            if (today.date() === 1 && today.month() === 3) {
+                const bdayYears = today.year() - baseDate.year();
                 document.getElementById("bday-years").innerText = bdayYears;
                 document.getElementById("bday").style.display = "block";
             }
+
+            const prevValues = {};
+            let isFirstRender = true;
+
+            function flash(el, className) {
+                el.classList.remove(className);
+                void el.offsetWidth; // force reflow to restart animation
+                el.classList.add(className);
+                setTimeout(() => el.classList.remove(className), 600);
+            }
+
+            function animateCountUp(el, target, duration) {
+                const startTime = performance.now();
+                function step(now) {
+                    const progress = Math.min((now - startTime) / duration, 1);
+                    const eased = 1 - Math.pow(1 - progress, 3); // ease-out cubic
+                    el.innerText = Math.floor(target * eased).toLocaleString("pt-br");
+                    if (progress < 1) requestAnimationFrame(step);
+                    else el.innerText = target.toLocaleString("pt-br");
+                }
+                requestAnimationFrame(step);
+            }
+
+            function render() {
+                const now = dayjs();
+                const diffSeconds = now.diff(baseDate, 'second');
+
+                document.getElementById("dayOfWeek").innerText = now.format("dddd");
+                document.getElementById("fullDate").innerText = now.format("D [de] MMMM [de] YYYY");
+
+                let totalEvents = 0;
+
+                for (const key of Object.keys(rates)) {
+                    const value = Math.floor(rates[key] * diffSeconds / 86400);
+                    totalEvents += value;
+
+                    const el = document.getElementById(`stat-${key}`);
+                    const statDiv = el.closest('.stat');
+
+                    if (isFirstRender) {
+                        animateCountUp(el, value, 1500);
+                    } else if (value !== prevValues[key]) {
+                        el.innerText = value.toLocaleString("pt-br");
+                        flash(statDiv, 'ticked');
+                    }
+                    prevValues[key] = value;
+                }
+
+                const totalEl = document.getElementById("total-events");
+                if (isFirstRender) {
+                    animateCountUp(totalEl, totalEvents, 1500);
+                } else if (totalEvents !== prevValues['__total']) {
+                    totalEl.innerText = totalEvents.toLocaleString("pt-br");
+                    flash(totalEl, 'ticked-inline');
+                }
+                prevValues['__total'] = totalEvents;
+                isFirstRender = false;
+            }
+
+            render();
+            setInterval(render, 1000);
         });
     </script>
 </head>
